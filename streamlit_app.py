@@ -14,39 +14,30 @@ footer {visibility: hidden !important; display: none !important;}
 
 /* 2. 우측 상단 깃허브 링크 및 각종 툴바 숨기기 */
 [data-testid="stToolbar"] {visibility: hidden !important; display: none !important;}
+[data-testid="stDecoration"] {display: none !important; visibility: hidden !important;}
 
-/* 3. 모바일/PC 하단 'Hosted with Streamlit' 및 'share.streamlit.io/user/...' 배지 완벽 제거 */
-/* Streamlit 배지와 관련된 모든 클래스의 렌더링을 원천 차단합니다 */
+/* 3. [핵심] 모바일/PC 하단 'Hosted with Streamlit' 및 주소 배지 완벽 제거 */
+/* 속성(href, title 등)에 특정 문자열이 포함된 모든 요소 강제 삭제 */
+a[href^="https://streamlit.io/cloud"] {display: none !important; visibility: hidden !important;}
+a[href*="share.streamlit.io"] {display: none !important; visibility: hidden !important;}
+a[title*="Hosted with Streamlit"] {display: none !important; visibility: hidden !important;}
+
+/* Streamlit 배지와 관련된 모든 클래스 및 특정 ID의 렌더링 원천 차단 */
 [class^="viewerBadge_"] {display: none !important; visibility: hidden !important;}
 .viewerBadge_container {display: none !important; visibility: hidden !important;}
 .viewerBadge_link {display: none !important; visibility: hidden !important;}
+#st-viewer-badge {display: none !important; visibility: hidden !important;}
 
-/* 4. 모바일 화면 최하단 여백 및 추가 생성되는 팝업 컨테이너 제거 */
+/* 4. 모바일 화면 최하단 여백 제거 (공백 차지 방지) */
 div[data-testid="stAppViewBlockContainer"] {padding-bottom: 0rem !important;}
-#stDecoration {display: none !important;}
 </style>
 """
-st.markdown(
-    """
-    <style>
-    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob,
-    .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137,
-    .viewerBadge_text__1JaDK {
-        display: none;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
 
 
 
 # 2. CSS 적용
 st.markdown(hide_st_style, unsafe_allow_html=True)
 
-# 2. 정의한 변수명(hide_st_style)을 정확히 입력하여 마크다운으로 렌더링
-st.markdown(hide_st_style, unsafe_allow_html=True)
 # ==========================================
 # ==========================================
 # ⚙️ 설정 부분
