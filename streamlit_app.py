@@ -2,7 +2,26 @@ import streamlit as st
 import pandas as pd
 import os
 from datetime import datetime
+# ==========================================
+# 1. Streamlit 기본 UI 숨기기 CSS 코드 추가
+# ==========================================
+hide_streamlit_style = """
+<style>
+/* 우측 상단 깃허브 링크 및 각종 툴바 숨기기 */
+[data-testid="stToolbar"] {visibility: hidden !important;}
 
+/* 우측 상단 햄버거 메뉴(점 3개) 숨기기 */
+#MainMenu {visibility: hidden !important;}
+
+/* 하단 'Made with Streamlit' 워터마크 숨기기 */
+footer {visibility: hidden !important;}
+
+/* 상단 헤더 영역 전체 숨기기 (필요시 사용) */
+header {visibility: hidden !important;}
+</style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+# ==========================================
 # ==========================================
 # ⚙️ 설정 부분
 # ==========================================
@@ -11,7 +30,7 @@ ADMIN_PASSWORD = "admin"  # ⚠️ 필요시 변경하여 사용하세요
 
 st.set_page_config(page_title="공구/자재 구매 요청 시스템", page_icon="🛠️", layout="wide")
 
-st.title("🛠️ 공구/자재 구매 요청 시스템")
+st.title("🛠️ 공구/자재 구매 요청")
 
 # 탭을 나누어 폼 입력 방식을 다르게 설정
 tab1, tab2 = st.tabs(["📦 기존 자재 신청 (자재번호 있음)", "🆕 신규 공구/자재 신청 (자재번호 없음)"])
@@ -134,7 +153,7 @@ with tab2:
 # 🔒 관리자 전용 메뉴 (엑셀 다운로드 영역)
 # ==========================================
 st.divider()
-st.subheader("📁 관리자 전용 메뉴")
+st.subheader("관리자")
 
 pwd_input = st.text_input("관리자 비밀번호를 입력하세요", type="password", key="admin_pwd")
 
