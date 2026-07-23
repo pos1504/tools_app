@@ -8,21 +8,22 @@ from datetime import datetime
 st.header("Hosted")
 hide_st_style = """
 <style>
-/* 1. 우측 상단 햄버거 메뉴(점 3개) 숨기기 */
-#MainMenu {visibility: hidden !important;}
-
-/* 2. 하단 'Made with Streamlit' 기본 푸터 숨기기 및 공간 차지 방지 */
+/* 1. 우측 상단 햄버거 메뉴(점 3개) 및 기본 푸터 숨기기 */
+#MainMenu {visibility: hidden !important; display: none !important;}
 footer {visibility: hidden !important; display: none !important;}
 
-/* 3. 우측 상단 깃허브 링크 및 각종 툴바 숨기기 */
+/* 2. 우측 상단 깃허브 링크 및 각종 툴바 숨기기 */
 [data-testid="stToolbar"] {visibility: hidden !important; display: none !important;}
 
-/* 4. [핵심] 모바일/클라우드 우측 하단 'Hosted with Streamlit' 플로팅 배지 숨기기 */
-[class^="viewerBadge_container"] {display: none !important;}
-[class^="viewerBadge_link"] {display: none !important;}
+/* 3. 모바일/PC 하단 'Hosted with Streamlit' 및 'share.streamlit.io/user/...' 배지 완벽 제거 */
+/* Streamlit 배지와 관련된 모든 클래스의 렌더링을 원천 차단합니다 */
+[class^="viewerBadge_"] {display: none !important; visibility: hidden !important;}
+.viewerBadge_container {display: none !important; visibility: hidden !important;}
+.viewerBadge_link {display: none !important; visibility: hidden !important;}
 
-/* 5. 상단 헤더 공간(빈 공간)까지 완전히 없애고 싶을 때 (선택 사항) */
-[data-testid="stHeader"] {visibility: hidden !important; display: none !important;}
+/* 4. 모바일 화면 최하단 여백 및 추가 생성되는 팝업 컨테이너 제거 */
+div[data-testid="stAppViewBlockContainer"] {padding-bottom: 0rem !important;}
+#stDecoration {display: none !important;}
 </style>
 """
 
