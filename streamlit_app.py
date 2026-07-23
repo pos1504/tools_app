@@ -8,16 +8,26 @@ from datetime import datetime
 st.header("Hosted")
 hide_st_style = """
 <style>
-/* 우측 상단 햄버거 메뉴(점 3개) 숨기기 */
-#MainMenu {visibility: hidden;}
+/* 1. 우측 상단 햄버거 메뉴(점 3개) 숨기기 */
+#MainMenu {visibility: hidden !important;}
 
-/* 하단 'Made with Streamlit' 워터마크 숨기기 */
-footer {visibility: hidden;}
+/* 2. 하단 'Made with Streamlit' 기본 푸터 숨기기 및 공간 차지 방지 */
+footer {visibility: hidden !important; display: none !important;}
 
-/* (선택) 우측 상단 깃허브 링크 및 각종 툴바 숨기기 */
-[data-testid="stToolbar"] {visibility: hidden !important;}
+/* 3. 우측 상단 깃허브 링크 및 각종 툴바 숨기기 */
+[data-testid="stToolbar"] {visibility: hidden !important; display: none !important;}
+
+/* 4. [핵심] 모바일/클라우드 우측 하단 'Hosted with Streamlit' 플로팅 배지 숨기기 */
+[class^="viewerBadge_container"] {display: none !important;}
+[class^="viewerBadge_link"] {display: none !important;}
+
+/* 5. 상단 헤더 공간(빈 공간)까지 완전히 없애고 싶을 때 (선택 사항) */
+[data-testid="stHeader"] {visibility: hidden !important; display: none !important;}
 </style>
 """
+
+# 2. CSS 적용
+st.markdown(hide_st_style, unsafe_allow_html=True)
 
 # 2. 정의한 변수명(hide_st_style)을 정확히 입력하여 마크다운으로 렌더링
 st.markdown(hide_st_style, unsafe_allow_html=True)
