@@ -5,22 +5,22 @@ from datetime import datetime
 # ==========================================
 # 1. Streamlit 기본 UI 숨기기 CSS 코드 추가
 # ==========================================
-hide_streamlit_style = """
+st.header("Hosted")
+hide_st_style = """
 <style>
-/* 우측 상단 깃허브 링크 및 각종 툴바 숨기기 */
-[data-testid="stToolbar"] {visibility: hidden !important;}
-
 /* 우측 상단 햄버거 메뉴(점 3개) 숨기기 */
-#MainMenu {visibility: hidden !important;}
+#MainMenu {visibility: hidden;}
 
 /* 하단 'Made with Streamlit' 워터마크 숨기기 */
-footer {visibility: hidden !important;}
+footer {visibility: hidden;}
 
-/* 상단 헤더 영역 전체 숨기기 (필요시 사용) */
-header {visibility: hidden !important;}
+/* (선택) 우측 상단 깃허브 링크 및 각종 툴바 숨기기 */
+[data-testid="stToolbar"] {visibility: hidden !important;}
 </style>
 """
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
+# 2. 정의한 변수명(hide_st_style)을 정확히 입력하여 마크다운으로 렌더링
+st.markdown(hide_st_style, unsafe_allow_html=True)
 # ==========================================
 # ==========================================
 # ⚙️ 설정 부분
