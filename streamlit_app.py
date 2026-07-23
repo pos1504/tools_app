@@ -31,7 +31,7 @@ with tab1:
     edited_df_exist = st.data_editor(
         st.session_state.df_exist,
         num_rows="dynamic",
-        use_container_width=True,
+        width="stretch",
         key="editor_exist",
         column_config={
             "자재번호": st.column_config.TextColumn("자재번호 (필수)", required=True),
@@ -89,7 +89,7 @@ with tab2:
     edited_df_new = st.data_editor(
         st.session_state.df_new,
         num_rows="dynamic",
-        use_container_width=True,
+       width="stretch",
         key="editor_new",
         column_config={
             "자재명": st.column_config.TextColumn("자재명 (필수)", required=True),
@@ -155,7 +155,7 @@ if pwd_input == ADMIN_PASSWORD:
         
         with st.expander("👀 현재 엑셀 로그 데이터 전체 미리보기"):
             current_df = pd.read_excel(FILE_NAME)
-            st.dataframe(current_df, use_container_width=True)
+            st.dataframe(current_df, width="stretch")
             
     else:
         st.info("아직 저장된 엑셀 파일(구매 기록)이 없습니다.")
